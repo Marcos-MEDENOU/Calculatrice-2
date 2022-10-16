@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #eee;
+    
+}
+
+.dark{
+    background-color: #282c2f;
+}
+.calculator{
+    position: relative;
+    width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 15px 15px 20px rgba(0,0, 0,0.1), 
+    -15px -15px 20px #fffb;
+    border: 2px solid #070707;
+    background-color: #fffb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dark .calculator{
+    background-color: #33393e;
+    box-shadow: 15px 15px 20px rgba(0,0, 0,0.1), 
+    -15px -15px 20px rgba(255,255,255,0.1);
+}
+.calculator #buttons{
+    position: relative;
+    display: grid;
+    
+}
+
+.calculator #buttons #value{
+    position: relative;
+    grid-column: span 4;
+    user-select: none;
+    overflow: none;
+    text-align: end;
+    color: black;
+    height: 100px;
+    line-height: 100px;
+    box-shadow: inset 5px 5px 10px rgba(0,0,0,0.1),
+    inset -5px -5px  20px #fff;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding: 0 20px;
+    font-size: 2em;
+    font-weight: 500 ;
+    border: 2px solid #070707;
+    max-width: fit-content(100%);
+    background-color: white;
+    overflow: hidden;
+}
+#top{
+    color: green;
+}
+.dark .calculator #buttons #value{
+    background-color: #33393e;
+    color: #fff;
+    box-shadow: 15px 15px 20px rgba(0,0, 0,0.1), 
+    inset -15px -15px 20px rgba(255,255,255,0.1);
+}
+
+.calculator #buttons span{
+    position: relative;
+    padding: 10px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px  20px #fff;
+    margin: 10px;
+    width: 60px;
+    cursor: pointer;
+    user-select: none;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #666;
+    border: 2px solid #070707;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px 10px #fff;
+    border-radius: 10px;
+    background-color: rgb(245, 240, 240);
+    color: rgb(5, 5, 5);
+    font-weight: 900;
+}
+.dark .calculator #buttons span{
+    color: white;
+    border: 2px solid #333;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px 10px rgba(255,255,255,0.1);
+    background-color: #33393e;
+}
+.calculator #buttons span:active{
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    inset -5px -5px 10px #fff;
+    color: #f44336;
+    border: 2px solid #070707;
+}
+.dark .calculator #buttons span:active{
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px 10px rgba(255,255,255,0.1);
+}
+
+.calculator #buttons span#CLEAR{
+    grid-column: span 1;
+    background-color:green;
+    color: #fff;
+    border: 2px solid #edf1f4;
+}
+
+.calculator #buttons span#plus{
+    grid-row: span 2;
+    background-color: rgb(175, 63, 63);
+    color: #fff;
+    font-weight: 800;
+    font-size: 2em;
+    border: 2px solid #242525;
+}
+
+.calculator #buttons span#equal{
+    grid-row: span 2;
+    background-color: #454b50;
+    color: #fff;
+    border: 2px solid #3a3b3b;
+}
+
+.calculator #buttons span#CLEAR:active,
+.calculator #buttons span#plus:active,
+.calculator #buttons span#equal:active{
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px 10px #fff,
+    inset 5px 5px 10px rgba(0,0, 0,0.1)
+}
+
+.tooggle{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #666;
+    cursor: pointer;
+    border: 2px solid #edf1f4;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px 10px rgba(255,255,255,0.1),
+}
+
+.dark .tooggleBtn{
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    -5px -5px 10px rgba(255,255,255,0.1),
+}
+
+.calculator #buttons span#del{
+    background-color: rgb(105, 105, 100);
+    border-top-left-radius: 10px transparent;
+    color: white;
+}
+
