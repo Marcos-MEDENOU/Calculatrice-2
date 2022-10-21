@@ -31,3 +31,39 @@ for(let i=0; i<=btn.length; i++){
 }
 
 
+ 
+  //let bodyHeight=document.querySelector('#body').clientHeight;
+  let directionY=1;
+  let directionX=1;
+
+  let positionX=0;
+  let positionY=0;
+
+  let ball = document.getElementById("myBall");
+  let limitBottom = window.innerHeight-ball.clientHeight;
+  let limitWidth=window.innerWidth-ball.clientWidth;
+  let compter=0;
+
+document.addEventListener('DOMContentLoaded', function(){
+  window.requestAnimationFrame(move);
+
+  function move(){
+    window.requestAnimationFrame(move);
+          positionY+= 5*directionY;
+          positionX+= 5*directionX;
+
+          // ball.style=`left:${positionX}px`;
+          ball.style=`top:${positionY}px`;
+          
+          if(positionY <= 0 || positionY>=limitBottom ){
+            directionY *= -1;
+          } 
+
+          if(positionX <= 0 || positionX>=limitWidth ){
+            directionX *= -1;
+          }
+        }
+
+})
+
+
