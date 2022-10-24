@@ -420,4 +420,140 @@ firingButton.addEventListener('click', onClickFiringButton);
 // Création aléatoire d'étoiles
 createStars(150);
 
+                        //html
 
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Compte à rebours</title>
+        <script src="js/utilities.js"></script>
+        <link rel="stylesheet" href="css/rocket.css">
+    </head>
+    <body>
+         <main>
+            <div class="container">
+                <img id="moon" src="images/fullmoon.png" alt="Fullmoon">
+            <aside id="billboard">
+                <span id="span"></span>
+            </aside>
+            <img id="launching-ramp" src="images/launching-ramp.png" alt="Launching ramp">
+            <img id="firing-button" src="images/firing-button.png" alt="Firing button">
+            <img id="cancel-button" src="images/cancel-button.png" alt="cancel button">
+            <img id="rocket" src="images/rocket1.png" alt="rocket">
+            </div>  
+        </main>
+        <script src="js/main.js"></script>
+    </body>
+</html>
+
+
+                //css
+
+
+html {
+    background-color: #000033;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#moon {
+    position: absolute;
+    top:100px;
+    right:100px;
+    width:150px;
+}
+
+#firing-button {
+    position: absolute;
+    left:100px;
+    bottom: 100px;
+    width:75px;
+    height:75px;
+    cursor: pointer;
+}
+
+#cancel-button {
+    position: absolute;
+    left:200px;
+    bottom: 100px;
+    width:75px;
+    height:75px;
+    cursor: pointer;
+}
+
+.disabled {
+    filter:grayscale(100%);
+    cursor: default;
+}
+
+#billboard {
+    position: absolute;
+    left:50px;
+    top:100px;
+    width: 314px;
+    height: 200px;
+    background-image: url('../images/billboard.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+#billboard span {
+    display: inline-block;
+    width: 100px;
+    height: 170px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    
+    font-size: 5rem;
+    line-height: 170px;
+    color: white;  
+}
+
+#launching-ramp {
+    position: absolute;
+    bottom:0;
+    left: 50%;
+    transform: translate(calc(-50% - 150px));
+}
+
+#rocket {
+    position: absolute;
+    bottom:-207px;
+    width:200px;
+    left: 50%;
+    transform: translate(-50%);
+    transition: bottom 20s ease, left 15s, transform 5s 1s;
+}
+
+#rocket.tookOff {
+    bottom: 2000px;
+    left: 75%;
+    transform: rotate(30deg) scale(0.5);
+}
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index:-1;
+}
+
+.star.tiny {
+    width: 1px;
+    height: 1px;
+}
+
+.star.normal {
+    width: 2px;
+    height: 2px;
+}
+
+.star.big {
+    width: 3px;
+    height: 3px;
+}
