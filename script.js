@@ -2246,3 +2246,78 @@ const todoApp = new TodoList(list)
 //     li.remove()
 // })
 
+//code du 09/11/2022
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+    <title>Exercice list rendering</title>
+    <style>
+        table{
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        td{
+            border: 2px solid black;
+            padding: 20px;
+        }
+        th{
+            border: 2px solid black;
+            padding: 20px;
+            font-style: normal;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="valu in tableau">{{valu}}</li>
+        </ul>
+        <table>
+            <thead>
+                <th>Fruits</th>
+                <th>Poids</th>
+                <th>Gout</th>
+            </thead>
+
+            <tbody>
+                <tr v-for="arr of arrayObject">
+                    <td>{{arr.fruit}}</td>
+                    <td>{{arr.poids}}</td>
+                    <td>{{arr.gout}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        new Vue({
+            el:"#app",
+
+
+
+            data:{
+                // Créer un objet data contenant un tableau simple et un tableau composé d'objets
+                tableau:[1,2,3,4,5,6,7,8,9],
+                arrayObject:[
+                    {fruit:"orange", poids:"15kg" , gout:"miam miam"},
+                    {fruit:"banane", poids:"5kg" , gout:"youah"},
+                    {fruit:"papaye", poids:"10kg" , gout:"ziwou"},
+                    {fruit:"mangue", poids:"2kg" , gout:"suet shuet"},
+                    {fruit:"sllll", poids:"3kg" , gout:"mietam"},
+                    {fruit:"goyage", poids:"1kg" , gout:"giouuu"},
+                ],
+            }
+        });
+    </script>
+</body>
+</html>
+
