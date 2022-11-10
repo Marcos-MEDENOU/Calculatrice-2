@@ -2320,4 +2320,177 @@ const todoApp = new TodoList(list)
     </script>
 </body>
 </html>
+//10/11/2022
 
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Freshly restaurant</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            margin-left: 10px;
+            font-size: 2em;
+        }
+
+        .title::before{
+            content: url(./ressources/images/star-10.svg);
+        }  
+        .title::after{
+            content: url(./ressources/images/star-10.svg);
+        }
+       .ul{
+            display: flex;
+            gap: 10px;
+        }
+        .titleClass{
+            color: red;
+        }
+          
+    </style>
+</head>
+
+<body>
+    <div id="app" v-bind:class="{appv:isActive}" :style="linearGradient">
+        <div  :style="appNav">
+            <div :style="seenLogoAndTitle">
+                <img src="./ressources/images/logo.png" alt="Logo_freshly_restaurant" :style="seen">
+                <h1 v-bind:class="{title:isActive}" v-on:click=" reverseText" >{{message}}</h1>   
+            </div>
+    
+            <nav :style="nav" >
+                <ul v-bind:class="{ul:isActive}">
+                    <li v-for="item in webLinkHome" :style="li"><a v-bind:href="item.href" :style="list">{{item.PageName}}</a></li>
+                </ul>
+            </nav> <br> <br>
+            <!-- <h2 :class="title">Test</h2> -->
+        </div>  
+        <div>
+            <!-- <button :style="buttonStyle" v-on:click="increment" >Le compte est a {{x}}</button> <br>
+
+            <input style="width:150px ; height:40px ; margin-left: 50px;" v-on:input="getVal">
+            <p style="width:150px ; height:40px ; margin-left: 50px;" v-bind:value="val">{{val}}</p> -->
+            <!-- 2em exercice -->
+            <!-- <button style="width:100px ; height:40px ; margin-left: 50px;" @click="basculer">Tout ajouter</button>
+            <p style="width:150px ; height:40px ; margin-left: 50px;" v-if="isVisible" >Vue c'est génial</p>
+            <p style="width:150px ; height:40px ; margin-left: 50px;" v-else="toogle">Ah non</p>     -->
+
+            <!-- 3em exercice -->
+
+            <input style="width:250px ; height:30px ; margin-left: 50px;" type="text" v-model="input">
+            
+            <button style=" height:30px ;" v-on:click="addTodo">Tout ajouter</button>
+                
+            <!-- <p>{{input}}</p> -->
+
+            <!-- <ul>
+                <li v-for="el for addTodo"></li>
+            </ul> -->
+        </div>
+        
+    </div>
+    <script>
+        // new Vue({
+        //     el: "#app",
+
+        //     data: {
+        //         webLinkHome: [
+        //             { PageName: "Home", href: "./index.html" },
+        //             { PageName: "About", href: "./about.html" },
+        //             { PageName: "Menus", href: "./menus.html" },
+        //             { PageName: "Contact", href: "./contact.html" },],
+        //         isActive: true,
+        //         seen: "width: 150px",
+        //         linearGradient:"background-image: linear-gradient(#dbb691 ,#ebe3db , #fff 15%);",
+        //         list:"text-decoration: none;color: black;font-weight: 800;font-style: italic",
+        //         appNav: "display: flex;margin: 0 auto;max-width: 1400px;justify-content: space-between;padding-top: 50px;",
+        //         nav:"display: flex;justify-content: center;align-items: center;",
+        //         li: "text-decoration: none;list-style: none;font-size: 20px;background-color: rgb(219, 203, 189);padding: 10px;font-weight: 800;",
+        //         seenLogoAndTitle:"display: flex;justify-content: center; align-items: center;text-align: center;" ,
+                
+        //         message:'FRESHLY RESTAURANT',
+        //     },
+        //     methods:{
+        //         reverseText:function(){
+        //             this.message=this.message.split('').reverse().join('')
+        //             console.log('text');
+        //         }
+        //     }
+        // })
+
+        new Vue({
+            el: "#app",
+
+            data: {
+                webLinkHome: [
+                    { PageName: "Home", href: "./index.html" },
+                    { PageName: "About", href: "./about.html" },
+                    { PageName: "Menus", href: "./menus.html" },
+                    { PageName: "Contact", href: "./contact.html" },],
+                isActive: true,
+                seen: "width: 150px",
+                linearGradient:"background-image: linear-gradient(#dbb691 ,#ebe3db , #fff 15%);",
+                list:"text-decoration: none;color: black;font-weight: 800;font-style: italic",
+                appNav: "display: flex;margin: 0 auto;max-width: 1400px;justify-content: space-between;padding-top: 50px;",
+                nav:"display: flex;justify-content:flex-end;align-items: center;",
+                li: "text-decoration: none;list-style: none;font-size: 20px;background-color: rgb(219, 203, 189);padding: 10px;font-weight: 800;",
+                seenLogoAndTitle:"display: flex;justify-content: center; align-items: center;text-align: center;" ,       
+                buttonStyle:"height:50px; margin-left:150px",
+                message:'FRESHLY RESTAURANT',
+                title:'titleClass',
+                isVisible:true,
+                x:0,
+                val:'',
+                input:'',
+                delete:'<button>X</button>',
+      
+            },
+            methods:{
+                reverseText:function(){
+                    this.message=this.message.split('').reverse().join('')
+                    console.log('text');
+                },
+                increment(){
+                    this.x=this.x+1;
+                },
+                getVal(e){
+                    this.val=e.target.value;
+                    console.log(this.val);
+                },
+                basculer :function(){
+                    if(this.isVisible){
+                        this.isVisible=false
+                    }else{
+                        this.isVisible=true
+                    }
+             
+                 },
+                 addTodo:function(){
+                    let span = document.createElement('li');
+                    let btn =document.createElement('button');
+                    btn.innerText='X';
+                    let span2=span.append(btn)
+                    document.body.append(span2) ;     
+                    span.innerHTML=this.input;
+                    span.style.marginLeft="70px";
+                    span.style.marginTop="5px";
+                    this.input=''
+                }
+                // toogle:function(){
+                //     return true
+                // }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
