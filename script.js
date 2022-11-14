@@ -2494,3 +2494,218 @@ const todoApp = new TodoList(list)
 </body>
 
 </html>
+
+//code 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.global.js"></script>
+    <title>TodoApp version Vue</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            }
+            h2{
+                font-size: 50px;
+                font-style: italic;
+                text-align: left;
+                font-weight: 800;
+                text-shadow: 10px 10px 10px 10px;
+                color: #fff;
+                animation: glow 1s ease-in-out infinite alternate;
+            }
+
+            @keyframes glow {
+                from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+                }
+                
+                to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+                }
+            } 
+            li{
+                color: black;
+                list-style: none;
+                font-size: 1.2em;
+                margin-block:5px ;
+                font-style: italic;
+                background-color: white;
+                border-radius: 10px;
+                border:'2px solid black';
+                padding: 15px;
+                position: relative;
+            }
+            h3{
+                font-size: 30px;
+                font-weight: 800;
+                font-style: italic;
+                text-decoration:underline;
+                color: white;
+                text-shadow: 10px 10px 10px 10px;
+            }
+            input#input{
+                padding: 20px;
+                width: 500px;
+                height: 50px;
+                border: 2px solid rgb(27, 153, 27);
+                border-radius: 15px;
+                box-shadow: 5px 5px 5px;
+            }
+
+            #button{
+                margin-top: 15px;
+                background-color:rgba(109, 110, 109, 0.9);
+                border-radius: 13px;
+                font-size: 1.1em;
+                font-weight: 400;
+                color: rgb(9, 245, 245);
+                padding: 10px;
+                width: 70px;
+                margin-left: 3px;
+                box-shadow: 5px 5px 2px 2px rgb(9, 245, 245),
+                inset 5px 5px 5px 2px 2px
+            }
+
+            #buttonDelete{
+                margin-top: 15px;
+                background-color:rgba(109, 110, 109, 0.9);
+                border-radius: 13px;
+                font-size: 1.1em;
+                font-weight: 400;
+                color: rgb(154, 248, 72); 
+                margin-left: 5px;
+                padding: 10px;
+                width: 80px;
+                margin-left: 8px;
+                box-shadow: 5px 5px 2px 2px rgb(154, 248, 72),
+                inset 5px 5px 5px 2px 2px
+                
+            }
+
+            body{
+                width: 60vw;
+                height: 50vh;
+                align-items: center;
+                margin: 25px auto;
+                background-color: rgb(32, 32, 32);
+            }
+
+            #block_container{
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            #block_tasks{
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 50px;
+                width: 45vw;
+                border-radius: 15px;
+                background-color:transparent ;
+                opacity: 0.8;
+            }
+            span{
+                position: absolute;
+                width: 700px;
+                left: 64.8%;
+            }
+            svg{
+                width: 70px;
+                height: 30px; 
+                position: absolute;
+                text-align: center;
+                color: red;
+            }
+            #demo{
+                height: 100px;
+                font-size: 40px;
+                font-weight: 800px;
+                color:white;
+            }
+            #myList{
+                border: 1px solid rgb(145, 141, 141);
+                padding: 20px;
+            }
+            i{
+                position: absolute;
+                right: 55px;
+            }
+            span{
+                position: absolute;
+                left: 50px;
+            }
+            .titleclass{
+                text-decoration: line-through;
+            }
+    </style>
+</head>
+<body>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    <div id="app">
+        <div id="block_container">
+            <h2> GestTask's</h2>
+            <form action="#" method="get" @submit.prevent="addTask()">
+                <input id="input" type="text" placeholder="Enter your task please" v-model="input"> <br>
+                <button id="button" type="submit">ADD</button>
+                <button id="buttonDelete" @click="delAll()">RESET</button>
+            </form>
+        </div>
+        <div id="block_tasks">
+            <h3>Liste des taches de la journée</h3>
+        </div>
+        <ul id="myList">
+            <li v-for="(todo, index) in todos" :id="todo.id">
+                <input type="checkbox" disabled="isVisible" >
+                <span > {{todo.text}}</span>  
+                <i v-on:click="removeTask(todo)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+                    stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" 
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 
+                    2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 
+                    0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 
+                    2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+                </i>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        index=0;
+        const app=Vue.createApp({            
+            data:function(){
+                return {
+                    input:"",
+                    todos:[],
+                    isVisible:false
+                }
+            }, 
+            methods:{
+                addTask(){
+                    if(this.input !=='' && this.input !==' ' ){
+                        this.todos.push({id:index++, text:this.input})
+                    } 
+                    this.input=''  
+                }, 
+                removeTask(todo){
+                    console.log('click')
+                    this.todos=this.todos.filter(function(el, index){
+                        return el !=todo
+                    })
+                },
+                delAll(){
+                    console.log('cli');
+                    this.todos=[]
+                }
+            },
+
+        }).mount('#app')
+    </script>
+</body>
+</html>
